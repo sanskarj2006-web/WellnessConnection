@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Connection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🌿 Wellness Connection</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#activities">Activities</a>
+            <a href="#recommendations">Recommendations</a>
+            <a href="#progress">Progress</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- HOME -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <p class="tagline">YOUR WELLNESS, YOUR JOURNEY</p>
+
+                <h1>Connect with a<br>
+                    <span>healthier you.</span>
+                </h1>
+
+                <p>
+                    Discover wellness activities, personalized recommendations,
+                    and simple ways to build healthier daily habits.
+                </p>
+
+                <button onclick="scrollToActivities()">
+                    Explore Activities →
+                </button>
+            </div>
+
+            <div class="hero-card">
+                <div class="circle">🌱</div>
+                <h3>Small steps.<br>Big changes.</h3>
+                <p>Build better habits one activity at a time.</p>
+            </div>
+        </section>
+<!-- USER PROFILE -->
+
+<section class="profile-section">
+
+    <div class="section-heading">
+        <p class="tagline">PERSONAL WELLNESS</p>
+        <h2>Create your wellness profile</h2>
+        <p>Choose your goal to receive personalized wellness recommendations.</p>
+    </div>
+
+    <div class="profile-card">
+
+        <div class="profile-icon">
+            👤
+        </div>
+
+        <div class="profile-form">
+
+            <label for="userName">Your Name</label>
+
+            <input
+                type="text"
+                id="userName"
+                placeholder="Enter your name"
+            >
+
+            <label for="wellnessGoal">Your Wellness Goal</label>
+
+            <select id="wellnessGoal">
+                <option value="Fitness">🏃 Fitness</option>
+                <option value="Mindfulness">🧘 Mindfulness</option>
+                <option value="Nutrition">🥗 Nutrition</option>
+                <option value="Sleep">😴 Better Sleep</option>
+            </select>
+
+            <button onclick="saveProfile()">
+                Save Profile
+            </button>
+
+        </div>
+
+        <div id="profileMessage" class="profile-message">
+            Your profile will appear here.
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- FEATURES -->
+        <section class="features">
+            <div class="feature-card">
+                <span>🧘</span>
+                <h3>Mindfulness</h3>
+                <p>Relax your mind and reduce daily stress.</p>
+            </div>
+
+            <div class="feature-card">
+                <span>🏃</span>
+                <h3>Fitness</h3>
+                <p>Stay active with simple exercises.</p>
+            </div>
+
+            <div class="feature-card">
+                <span>🥗</span>
+                <h3>Nutrition</h3>
+                <p>Discover healthier lifestyle choices.</p>
+            </div>
+
+            <div class="feature-card">
+                <span>😴</span>
+                <h3>Sleep</h3>
+                <p>Develop habits for better sleep.</p>
+            </div>
+        </section>
+
+
+        <!-- ACTIVITIES -->
+        <section id="activities" class="section">
+
+            <div class="section-heading">
+                <p class="tagline">WELLNESS LIBRARY</p>
+                <h2>Find your activity</h2>
+                <p>Search and explore activities based on your wellness goals.</p>
+            </div>
+
+            <div class="controls">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Search activities..."
+                    onkeyup="searchActivities()"
+                >
+
+                <select id="categoryFilter" onchange="filterActivities()">
+                    <option value="All">All Categories</option>
+                    <option value="Fitness">Fitness</option>
+                    <option value="Mindfulness">Mindfulness</option>
+                    <option value="Nutrition">Nutrition</option>
+                    <option value="Sleep">Sleep</option>
+                </select>
+
+                <button class="sort-btn" onclick="sortActivities()">
+                    Sort by Duration ↕
+                </button>
+            </div>
+
+            <div id="activityContainer" class="activity-grid"></div>
+
+        </section>
+
+
+        <!-- RECOMMENDATIONS -->
+        <section id="recommendations" class="recommendation-section">
+
+            <div class="section-heading">
+                <p class="tagline">SMART RECOMMENDATIONS</p>
+                <h2>Recommended for you</h2>
+                <p>
+                    Choose your wellness goal and get activities
+                    recommended using a priority-based algorithm.
+                </p>
+            </div>
+
+            <div class="goal-buttons">
+                <button onclick="recommend('Fitness')">🏃 Fitness</button>
+                <button onclick="recommend('Mindfulness')">🧘 Mindfulness</button>
+                <button onclick="recommend('Nutrition')">🥗 Nutrition</button>
+                <button onclick="recommend('Sleep')">😴 Sleep</button>
+            </div>
+
+            <div id="recommendationContainer" class="recommendation-grid">
+                <p class="empty-message">
+                    Select a wellness goal to get recommendations.
+                </p>
+            </div>
+
+        </section>
+<!-- ACTIVITY HISTORY -->
+
+<section id="history" class="section history-section">
+
+    <div class="section-heading">
+        <p class="tagline">YOUR ACTIVITY LOG</p>
+        <h2>Activity History</h2>
+        <p>Keep track of the wellness activities you have completed.</p>
+    </div>
+
+    <div id="historyContainer" class="history-list">
+        <p class="empty-message">
+            No activities completed yet. Start your wellness journey! 🌱
+        </p>
+    </div>
+
+</section>
+
+        <!-- PROGRESS -->
+        <section id="progress" class="section progress-section">
+
+            <div class="section-heading">
+                <p class="tagline">YOUR PROGRESS</p>
+                <h2>Keep going 🌱</h2>
+            </div>
+
+            <div class="progress-card">
+
+                <div class="progress-stat">
+                    <span id="completedCount">0</span>
+                    <p>Activities Completed</p>
+                </div>
+
+                <div class="progress-stat">
+                    <span id="totalCount">0</span>
+                    <p>Total Activities</p>
+                </div>
+
+                <div class="progress-stat">
+                    <span id="progressPercent">0%</span>
+                    <p>Completion Rate</p>
+                </div>
+
+            </div>
+
+            <div class="progress-bar">
+                <div id="progressFill"></div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>🌿 Wellness Connection</p>
+        <p>DSA Minor Project • Wellness Resource & Recommendation Platform</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
